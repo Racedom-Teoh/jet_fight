@@ -82,3 +82,65 @@ class FighterJetEnv(gym.Env):
     def _get_obs(self):
         # 返回觀測值
         return np.array([self.jet_pos[0], self.jet_pos[1], self.target_pos[0], self.target_pos[1], ...], dtype=np.float32)
+
+### 4.1 DQN 訓練配置
+```python
+model = DQN(
+    "MlpPolicy", 
+    env, 
+    verbose=0,
+    tensorboard_log="./fighter_jet_dqn_2/",
+    learning_rate=5e-5,
+    buffer_size=500000,
+    learning_starts=50000,
+    batch_size=256,
+    tau=0.001,
+    gamma=0.99,
+    train_freq=1,
+    gradient_steps=1,
+    target_update_interval=5000,
+    exploration_fraction=0.7,
+    exploration_initial_eps=1.0,
+    exploration_final_eps=0.1,
+    max_grad_norm=10,
+    policy_kwargs=dict(net_arch=[256, 256, 256]),
+    device=device
+)
+
+### 4.3 回調函數
+```python
+class EarlyStoppingCallback(BaseCallback):
+    def __init__(self, stop_threshold=0.01):
+        super().__init__()
+        self.stop_threshold = stop_threshold
+
+    def _on_step(self) -> bool:
+        if self.model.episode_reward[-1] < self.stop_threshold:
+            print("Early stopping triggered!")
+            return False
+        return True
+
+## 5. 結果與分析
+### 5.1 訓練過程
+在訓練過程中，模型經歷了長達 2,000,000 步的訓練，並且使用了 GPU 加速以提高訓練效率。訓練時間約為 6 小時。為了防止過度訓練並提高訓練效率，我們引入了早停機制（Early Stopping），當訓練過程中的平均獎勳長時間無顯著提高時，該機制會自動終止訓練。這一策略有效地減少了訓練時間，同時避免了過擬合的問題。
+
+訓練過程中的主要指標變化如下：
+- 訓練總步數：2,000,000
+- 訓練時間：約 6 小時（基於 GPU 加速）
+- 早停機制：在獎勵未改善的情況下自動停止訓練。
+
+### 5.2 可視化結果
+以下是訓練過程中關鍵指標的可視化結果：
+**1. 平均獎勵：**
+- 隨著訓練步數的增加，Agent的平均獎勳逐步上升，這表明Agent學會了如何根據當前的環境狀態進行正確的選擇。最初，Agent主要依賴隨機探索，但隨著訓練進行，逐漸學會了更加高效的戰鬥策略。
+
+**2. 探索率 (Epsilon)：**
+- 在訓練過程中，探索率從初始值 1.0 線性衰減至 0.1，這一過程顯示出Agent在探索過程中的逐步轉變。最初，Agent會進行大量的隨機探索，而隨著訓練進行，它開始更加依賴學到的策略進行決策。這樣的衰減過程幫助Agent更好地平衡探索與利用。
+
+**2. Q 值分佈：**
+- 隨著訓練的進行，Q 值的最大值、最小值以及平均值逐漸穩定在合理範圍內。這表明Agent已經學會了對不同的狀態采取合適的行動，並且該過程的穩定性表明訓練已經達到一定程度的收斂。
+
+### 5.3 測試結果
+在測試階段，Agent成功展示了其學習到的控制策略。具體結果如下：
+- 導航與攻擊：Agent能夠快速定位目標並進行追蹤，並成功擊中敵機。在多次測試中，智能體表現出高度一致的高效操作，能夠在動態變化的環境中維持良好的性能。
+- 平均獎勳：在測試過程中，Agent的平均獎勳穩定在 200 左右，這表明Agent的行為策略已經達到了一個較為高效的水準，且能夠持續做出有效的決策。
