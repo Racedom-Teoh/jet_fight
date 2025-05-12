@@ -82,7 +82,7 @@ class FighterJetEnv(gym.Env):
     def _get_obs(self):
         # 返回觀測值
         return np.array([self.jet_pos[0], self.jet_pos[1], self.target_pos[0], self.target_pos[1], ...], dtype=np.float32)
-
+```
 ### 4.1 DQN 訓練配置
 ```python
 model = DQN(
@@ -106,7 +106,7 @@ model = DQN(
     policy_kwargs=dict(net_arch=[256, 256, 256]),
     device=device
 )
-
+```
 ### 4.3 回調函數
 ```python
 class EarlyStoppingCallback(BaseCallback):
@@ -119,7 +119,7 @@ class EarlyStoppingCallback(BaseCallback):
             print("Early stopping triggered!")
             return False
         return True
-
+```
 ## 5. 結果與分析
 ### 5.1 訓練過程
 在訓練過程中，模型經歷了長達 2,000,000 步的訓練，並且使用了 GPU 加速以提高訓練效率。訓練時間約為 6 小時。為了防止過度訓練並提高訓練效率，我們引入了早停機制（Early Stopping），當訓練過程中的平均獎勳長時間無顯著提高時，該機制會自動終止訓練。這一策略有效地減少了訓練時間，同時避免了過擬合的問題。
