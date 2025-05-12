@@ -8,6 +8,11 @@
 為了達成這些目標，研究者設計了一個「獎勳函數」，這個函數能夠根據戰鬥機的表現給予它相應的回報。例如，如果戰鬥機成功完成某個任務（例如擊中目標或成功避開敵人），它會獲得獎勳。這樣，AI 就能學習如何在各種情況下做出最好的決策。
 此外，為了讓這個系統的決策過程更加透明，研究者提出了一種方法來分析 Agent 的選擇。他們會比較Agent選擇的「實際行動」與其他可能行動的效果（稱為「反事實行動」）。這樣可以讓我們更清楚了解為什麼代理人會選擇某個行動，並進一步解釋它的決策邏輯。
 
+<p align="center">
+  <img src="media/media1.gif" alt="GIF 1" width="250">
+  <img src="media/media2.gif" alt="GIF 2" width="250">
+  <img src="media/media3.gif" alt="GIF 3" width="250">
+</p>
 
 ## 2. 貢獻
 本研究的主要貢獻如下：
@@ -36,7 +41,8 @@
   - 避免被擊中獎勳：成功躲避敵人攻擊時給予獎勳；
   - 懲罰：在不必要的時候進行加速或是無效的射擊，會使Agent受到懲罰。
     
-    ![image](https://github.com/user-attachments/assets/21703cf7-2be2-4fa9-8e05-b31194b0f94e)
+   ![image](https://github.com/user-attachments/assets/c12984f6-b627-4603-99f4-3a18355a6661)
+
 
 ### 3.2 深度強化學習模型
 我們使用 Stable-Baselines3 框架中的 DQN 算法來訓練Agent，並設計了如下的網絡結構與訓練參數：
@@ -159,7 +165,10 @@ class EarlyStoppingCallback(BaseCallback):
   ![image](https://github.com/user-attachments/assets/f99782f5-6332-4530-9c03-0e2ee4cb0aa2)
 
 
-### 5.3 測試結果
-在測試階段，Agent成功展示了其學習到的控制策略。具體結果如下：
-  - 導航與攻擊：Agent能夠快速定位目標並進行追蹤，並成功擊中敵機。在多次測試中，智能體表現出高度一致的高效操作，能夠在動態變化的環境中維持良好的性能。
-  - 平均獎勳：在測試過程中，Agent的平均獎勳穩定在 200 左右，這表明Agent的行為策略已經達到了一個較為高效的水準，且能夠持續做出有效的決策。
+### 5.3 參考論文
+
+[Fighter Jet Navigation and Combat using Deep Reinforcement Learning with Explainable AI](https://arxiv.org/pdf/2502.13373v1)
+![image](https://github.com/user-attachments/assets/9f021368-3cc5-4108-acb4-344f962da4cf)
+
+
+  
