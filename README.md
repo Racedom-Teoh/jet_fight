@@ -170,7 +170,8 @@ class EarlyStoppingCallback(BaseCallback):
 
 
 ### 5.3 參考論文
-[github](https://github.com/swatikar95/Autonomous-Fighter-Jet-Navigation-and-Combat)
+
+[Github : Autonomous-Fighter-Jet-Navigation-and-Combat](https://github.com/swatikar95/Autonomous-Fighter-Jet-Navigation-and-Combat)
 
 [Fighter Jet Navigation and Combat using Deep Reinforcement Learning with Explainable AI](https://arxiv.org/pdf/2502.13373v1)
 
