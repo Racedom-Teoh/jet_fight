@@ -9,14 +9,6 @@ Kar, S., Dey, S., Banavar, M. K., & Sakib, S. K. (2025). Fighter Jet Navigation 
 [Fighter Jet Navigation and Combat using Deep Reinforcement Learning with Explainable AI](https://arxiv.org/pdf/2502.13373v1)
 
 
-
-
-
-
-<p align="center">
-![image](https://github.com/user-attachments/assets/9f021368-3cc5-4108-acb4-344f962da4cf)
-</p>
-
 ## 1. 引言
 這篇論文介紹了一個使用人工智慧（AI）來控制戰鬥機的系統，並且運用了深度強化學習（DRL）來解決多目標的任務。具體來說，這個戰鬥機Agent必須在一個模擬的環境中進行導航，並且達到以下目標：
   
