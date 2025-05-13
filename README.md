@@ -1,5 +1,16 @@
 # 基於深度強化學習的自主戰鬥機導航與戰鬥系統
 
+## 參考論文
+
+Kar, S., Dey, S., Banavar, M. K., & Sakib, S. K. (2025). Fighter Jet Navigation and Combat using Deep Reinforcement Learning with Explainable AI. arXiv preprint arXiv:2502.13373.
+
+[Github : Autonomous-Fighter-Jet-Navigation-and-Combat](https://github.com/swatikar95/Autonomous-Fighter-Jet-Navigation-and-Combat)
+
+[Fighter Jet Navigation and Combat using Deep Reinforcement Learning with Explainable AI](https://arxiv.org/pdf/2502.13373v1)
+
+![image](https://github.com/user-attachments/assets/9f021368-3cc5-4108-acb4-344f962da4cf)
+
+
 ## 1. 引言
 這篇論文介紹了一個使用人工智慧（AI）來控制戰鬥機的系統，並且運用了深度強化學習（DRL）來解決多目標的任務。具體來說，這個戰鬥機Agent必須在一個模擬的環境中進行導航，並且達到以下目標：
   
@@ -169,13 +180,7 @@ class EarlyStoppingCallback(BaseCallback):
   ![image](https://github.com/user-attachments/assets/f99782f5-6332-4530-9c03-0e2ee4cb0aa2)
 
 
-### 5.3 參考論文
 
-[Github : Autonomous-Fighter-Jet-Navigation-and-Combat](https://github.com/swatikar95/Autonomous-Fighter-Jet-Navigation-and-Combat)
-
-[Fighter Jet Navigation and Combat using Deep Reinforcement Learning with Explainable AI](https://arxiv.org/pdf/2502.13373v1)
-
-![image](https://github.com/user-attachments/assets/9f021368-3cc5-4108-acb4-344f962da4cf)
 
 
   
